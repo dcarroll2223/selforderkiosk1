@@ -74,7 +74,9 @@ export default function OrderScreen() {
   const listCategories = async () => {
     dispatch({ type: 'CATEGORY_LIST_REQUEST' });
     try {
-      const response = await axios.get('/api/categories');
+      const response = await axios.get(
+        'https://selforderkiosk1.herokuapp.com/api/categories'
+      );
       dispatch({ type: 'CATEGORY_LIST_SUCCESS', payload: response.data });
     } catch (error) {
       dispatch({ type: 'CATEGORY_LIST_FAIL', payload: error.message });
@@ -84,7 +86,9 @@ export default function OrderScreen() {
   const listProducts = async (name = '') => {
     dispatch({ type: 'PRODUCT_LIST_REQUEST' });
     try {
-      const result = await axios.get(`/api/products?category=${name}`);
+      const result = await axios.get(
+        `https://selforderkiosk1.herokuapp.com/api/products?category=${name}`
+      );
       dispatch({ type: 'PRODUCT_LIST_SUCCESS', payload: result.data });
       console.log('cat', result.data);
     } catch (error) {
